@@ -33,192 +33,201 @@ class _FormPageState extends State<FormPage> {
 //      appBar: AppBar(title: Text('New Form'),backgroundColor: Colors.white70,),
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFFf0f2f5),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Center(
+      body: Column(
+        children: [
+          SizedBox(height: 10,),
+          Center(
+            child: NeuContainer(
               child: Text(
-                'New Visiting Card',
+                'Enter Details',
                 style: TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.w400,
                     letterSpacing: 1.2),
               ),
             ),
-            SingleChildScrollView(
-              child: NeuContainer(
-                width: MediaQuery.of(context).size.width / 1.1,
-                height: MediaQuery.of(context).size.height / 1.3,
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'please enter some text';
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          fullName = value;
-                          print(fullName);
-                        },
-                        decoration: InputDecoration(
-                            hintText: "Full Name", icon: Icon(Icons.person)),
-                      ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'please enter some text';
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          workPosition = value;
-                        },
-                        decoration: InputDecoration(hintText: "What are you?"),
-                      ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'please enter some text';
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          email = value;
-                        },
-                        decoration: InputDecoration(
-                            hintText: "Your Email",
-                            icon: Icon(Icons.alternate_email)),
-                      ),
-                      Column(
-                        children: [
-                          TextFormField(
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'please enter some text';
-                              }
-                              return null;
-                            },
-                            onChanged: (value) {
-                              address1 = value;
-                            },
-                            decoration: InputDecoration(
-                                hintText: "Address Line 1",
-                                icon: Icon(Icons.home)),
-                          ),
-                          TextFormField(
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'please enter some text';
-                              }
-                              return null;
-                            },
-                            onChanged: (value) {
-                              address2 = value;
-                            },
-                            decoration:
-                                InputDecoration(hintText: "Address Line 2"),
-                          ),
-                          TextFormField(
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'please enter some text';
-                              }
-                              return null;
-                            },
-                            onChanged: (value) {
-                              address3 = value;
-                            },
-                            decoration:
-                                InputDecoration(hintText: "Address Line 3"),
-                          ),
-                        ],
-                      ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'please enter some text';
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          phoneNumber = value;
-                        },
-                        decoration: InputDecoration(
-                            hintText: "Phone number", icon: Icon(Icons.phone)),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          FloatingActionButton(
-                            heroTag: 'somdaslkjfdika',
-                            mini: true,
-                            onPressed: () async{
-                              Future getImage() async {
-                                final picker = ImagePicker();
+          ),
 
-                                final pickedFile = await picker.getImage(
-                                    source: ImageSource.gallery);
 
-                                setState(() {
-                                  path = pickedFile.path == null ? path : pickedFile.path;
-                                });
-                              }
-                              await getImage();
-                            },
-                            child: Icon(Icons.image),
-                          ),
-                          SizedBox(width: 20,),
-                          Text(path==null? 'Insert the logo you want' : '... ' + path.substring(path.length -10))
+          Form(
+            key: _formKey,
+            child: Expanded(
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'please enter some text';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        fullName = value;
+                        print(fullName);
+                      },
+                      decoration: InputDecoration(
+                          hintText: "Full Name", icon: Icon(Icons.person)),
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'please enter some text';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        workPosition = value;
+                      },
+                      decoration: InputDecoration(
+                        hintText: "Designation",
+                      ),
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'please enter some text';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        email = value;
+                      },
+                      decoration: InputDecoration(
+                          hintText: "Your Email",
+                          icon: Icon(Icons.alternate_email)),
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'please enter some text';
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            address1 = value;
+                          },
+                          decoration: InputDecoration(
+                              hintText: "Address Line 1",
+                              icon: Icon(Icons.home)),
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'please enter some text';
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            address2 = value;
+                          },
+                          decoration:
+                              InputDecoration(hintText: "Address Line 2"),
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'please enter some text';
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            address3 = value;
+                          },
+                          decoration:
+                              InputDecoration(hintText: "Address Line 3"),
+                        ),
+                      ],
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'please enter some text';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        phoneNumber = value;
+                      },
+                      decoration: InputDecoration(
+                          hintText: "Phone number", icon: Icon(Icons.phone)),
+                    ),
+                    Row(
+                      children: [
+                        FloatingActionButton(
+                          heroTag: 'somdaslkjfdika',
+                          mini: true,
+                          backgroundColor: Colors.blueGrey,
+                          onPressed: () async {
+                            Future getImage() async {
+                              final picker = ImagePicker();
 
-                        ],
-                      )
-                    ],
-                  ),
+                              final pickedFile = await picker.getImage(
+                                  source: ImageSource.gallery);
+
+                              setState(() {
+                                path = pickedFile.path == null
+                                    ? path
+                                    : pickedFile.path;
+                              });
+                            }
+
+                            await getImage();
+                          },
+                          child: Icon(Icons.image),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(path == null
+                            ? 'Company Logo'
+                            : '... ' + path.substring(path.length - 10))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                  ],
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                FloatingActionButton.extended(
-                  onPressed: () {
-                    print(fullName);
-                    if (true) {
-                      widget.cardData.addNewCard(VisitingCard(
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              FloatingActionButton.extended(
+                onPressed: () async {
+                  print(fullName);
+                  if (true) {
+                    await widget.cardData.addNewCard(VisitingCard(
                         fullName: fullName == null ? '' : fullName,
-                        workPosition: workPosition == null ? '' : workPosition,
+                        workPosition:
+                            workPosition == null ? '' : workPosition,
                         email: email == null ? '' : email,
                         address1: address1 == null ? '' : address1,
                         address2: address2 == null ? '' : address2,
                         address3: address3 == null ? '' : address3,
                         phoneNumber: phoneNumber == null ? '' : phoneNumber,
-                        path: path
-                      ));
+                        path: path));
 
-                      Navigator.pop(context);
-                    }
-                  },
-                  label: Text('CREATE'),
-                  icon: Icon(Icons.add),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-              ],
-            ),
-          ],
-        ),
+                    Navigator.pop(context);
+                  }
+                },
+                label: Text('CREATE'),
+                icon: Icon(Icons.arrow_forward),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+            ],
+          ),
+          SizedBox(height: 20,)
+        ],
       ),
     );
   }

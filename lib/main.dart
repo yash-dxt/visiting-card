@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
-import 'package:visiting_card/screens/form_page.dart';
 import 'package:visiting_card/screens/user_card_page.dart';
 import 'package:visiting_card/services/card_data.dart';
-import 'package:visiting_card/widgets/widgets.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
 import 'models/card_model.dart';
 
 void main() async{
+  var initialized = false;
+  print(initialized);
+  if (!initialized) {
+    initialized = true;
+    await Hive.initFlutter();
+
+    Hive.registerAdapter<VisitingCard>(VisitingCardAdapter());
+  }
+  print(initialized);
   runApp(MyApp());
 
   _requestPermission() async {
@@ -28,17 +36,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (BuildContext context) {
         CardData cardData = CardData();
-
-        cardData.addNewCard(
-          VisitingCard(
-              fullName: 'Yash Dixit',
-              workPosition: 'CEO-Google',
-              email: 'yashdixitsq@gmail.com',
-              address1: 'B/2-629, Ekta Gardens',
-              address2: 'Patparganj, IP Extension',
-              address3: 'New Delhi',
-              phoneNumber: '+91 9560704941'),
-        );
+        cardData.getVisitingCards();
         return cardData;
       },
       child: MaterialApp(

@@ -43,8 +43,8 @@ class NeuContainerWithoutPadding extends StatelessWidget {
 
 class NeuContainer extends StatelessWidget {
   const NeuContainer({
-    @required this.width,
-    @required this.height,
+    this.width,
+    this.height,
     this.child,
   });
 
@@ -56,7 +56,7 @@ class NeuContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20),
-      margin: EdgeInsets.all(10),
+//      margin: EdgeInsets.all(10),
       child: child,
       width: width,
       height: height,
@@ -89,7 +89,8 @@ class VisitingCardTwo extends StatelessWidget {
     @required this.address1,
     @required this.address2,
     @required this.address3,
-    @required this.phoneNumber, this.path,
+    @required this.phoneNumber,
+    this.path,
   }) : super(key: key);
 
   final Color majorColor;
@@ -102,6 +103,7 @@ class VisitingCardTwo extends StatelessWidget {
   final String address3;
   final String phoneNumber;
   final String path;
+
   @override
   Widget build(BuildContext context) {
     return NeuContainer(
@@ -114,10 +116,9 @@ class VisitingCardTwo extends StatelessWidget {
               child: Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              width: 100,
-              height: 100,
-              child: path == null ? Container() : Image.file(File(path))
-            ),
+                width: 100,
+                height: 100,
+                child: path == null ? Container() : Image.file(File(path))),
           )),
           Align(
             child: Text(
@@ -153,7 +154,7 @@ class VisitingCardTwo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '$address1 \n $address1  \n $address3 ',
+                '$address1\n$address2\n$address3',
                 style: TextStyle(color: visitingCardBlack, fontSize: 12),
               ),
               Text(
