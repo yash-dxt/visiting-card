@@ -31,7 +31,7 @@ class _FormPageState extends State<FormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
 //      appBar: AppBar(title: Text('New Form'),backgroundColor: Colors.white70,),
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xFFf0f2f5),
       body: Column(
         children: [
