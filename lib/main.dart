@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:visiting_card/screens/user_card_page.dart';
+import 'package:visiting_card/screens/welcome_screen.dart';
 import 'package:visiting_card/services/card_data.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'models/card_model.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         return cardData;
       },
       child: MaterialApp(
-        home: UserCardPage(),
+        home: WelcomeScreen(),
       ),
     );
   }

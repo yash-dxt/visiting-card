@@ -37,7 +37,8 @@ class _FormPageState extends State<FormPage> {
         children: [
           SizedBox(height: 10,),
           Center(
-            child: NeuContainer(
+            child: Container(
+              margin: EdgeInsets.all(10),
               child: Text(
                 'Enter Details',
                 style: TextStyle(
@@ -52,146 +53,150 @@ class _FormPageState extends State<FormPage> {
           Form(
             key: _formKey,
             child: Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width / 1.2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    TextFormField(
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'please enter some text';
-                        }
-                        return null;
-                      },
-                      onChanged: (value) {
-                        fullName = value;
-                        print(fullName);
-                      },
-                      decoration: InputDecoration(
-                          hintText: "Full Name", icon: Icon(Icons.person)),
-                    ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'please enter some text';
-                        }
-                        return null;
-                      },
-                      onChanged: (value) {
-                        workPosition = value;
-                      },
-                      decoration: InputDecoration(
-                        hintText: "Designation",
+              child: SingleChildScrollView(
+                child: Container(
+                  width: MediaQuery.of(context).size.width / 1.2,
+                  height: MediaQuery.of(context).size.height / 1.2,
+
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextFormField(
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'please enter some text';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          fullName = value;
+                          print(fullName);
+                        },
+                        decoration: InputDecoration(
+                            hintText: "Full Name", icon: Icon(Icons.person)),
                       ),
-                    ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'please enter some text';
-                        }
-                        return null;
-                      },
-                      onChanged: (value) {
-                        email = value;
-                      },
-                      decoration: InputDecoration(
-                          hintText: "Your Email",
-                          icon: Icon(Icons.alternate_email)),
-                    ),
-                    Column(
-                      children: [
-                        TextFormField(
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'please enter some text';
-                            }
-                            return null;
-                          },
-                          onChanged: (value) {
-                            address1 = value;
-                          },
-                          decoration: InputDecoration(
-                              hintText: "Address Line 1",
-                              icon: Icon(Icons.home)),
+                      TextFormField(
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'please enter some text';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          workPosition = value;
+                        },
+                        decoration: InputDecoration(
+                          hintText: "Designation",
                         ),
-                        TextFormField(
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'please enter some text';
-                            }
-                            return null;
-                          },
-                          onChanged: (value) {
-                            address2 = value;
-                          },
-                          decoration:
-                              InputDecoration(hintText: "Address Line 2"),
-                        ),
-                        TextFormField(
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'please enter some text';
-                            }
-                            return null;
-                          },
-                          onChanged: (value) {
-                            address3 = value;
-                          },
-                          decoration:
-                              InputDecoration(hintText: "Address Line 3"),
-                        ),
-                      ],
-                    ),
-                    TextFormField(
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          return 'please enter some text';
-                        }
-                        return null;
-                      },
-                      onChanged: (value) {
-                        phoneNumber = value;
-                      },
-                      decoration: InputDecoration(
-                          hintText: "Phone number", icon: Icon(Icons.phone)),
-                    ),
-                    Row(
-                      children: [
-                        FloatingActionButton(
-                          heroTag: 'somdaslkjfdika',
-                          mini: true,
-                          backgroundColor: Colors.blueGrey,
-                          onPressed: () async {
-                            Future getImage() async {
-                              final picker = ImagePicker();
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'please enter some text';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          email = value;
+                        },
+                        decoration: InputDecoration(
+                            hintText: "Your Email",
+                            icon: Icon(Icons.alternate_email)),
+                      ),
+                      Column(
+                        children: [
+                          TextFormField(
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'please enter some text';
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              address1 = value;
+                            },
+                            decoration: InputDecoration(
+                                hintText: "Address Line 1",
+                                icon: Icon(Icons.home)),
+                          ),
+                          TextFormField(
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'please enter some text';
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              address2 = value;
+                            },
+                            decoration:
+                                InputDecoration(hintText: "Address Line 2"),
+                          ),
+                          TextFormField(
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'please enter some text';
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              address3 = value;
+                            },
+                            decoration:
+                                InputDecoration(hintText: "Address Line 3"),
+                          ),
+                        ],
+                      ),
+                      TextFormField(
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'please enter some text';
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          phoneNumber = value;
+                        },
+                        decoration: InputDecoration(
+                            hintText: "Phone number", icon: Icon(Icons.phone)),
+                      ),
+                      Row(
+                        children: [
+                          FloatingActionButton(
+                            heroTag: 'somdaslkjfdika',
+                            mini: true,
+                            backgroundColor: Colors.blueGrey,
+                            onPressed: () async {
+                              Future getImage() async {
+                                final picker = ImagePicker();
 
-                              final pickedFile = await picker.getImage(
-                                  source: ImageSource.gallery);
+                                final pickedFile = await picker.getImage(
+                                    source: ImageSource.gallery);
 
-                              setState(() {
-                                path = pickedFile.path == null
-                                    ? path
-                                    : pickedFile.path;
-                              });
-                            }
+                                setState(() {
+                                  path = pickedFile.path == null
+                                      ? path
+                                      : pickedFile.path;
+                                });
+                              }
 
-                            await getImage();
-                          },
-                          child: Icon(Icons.image),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(path == null
-                            ? 'Company Logo'
-                            : '... ' + path.substring(path.length - 10))
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                  ],
+                              await getImage();
+                            },
+                            child: Icon(Icons.image),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(path == null
+                              ? 'Company Logo'
+                              : '... ' + path.substring(path.length - 10))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -13,7 +13,8 @@ class SharingPage extends StatefulWidget {
   final CardData cardData;
   final int index;
 
-  const SharingPage({Key key, this.card, this.cardData, this.index}) : super(key: key);
+  const SharingPage({Key key, this.card, this.cardData, this.index})
+      : super(key: key);
 
   @override
   _SharingPageState createState() => _SharingPageState();
@@ -54,17 +55,19 @@ class _SharingPageState extends State<SharingPage> {
                 children: [
                   Row(
                     children: [
-                      SizedBox(width: MediaQuery
-                          .of(context)
-                          .size
-                          .width /9,),
-                      Container(child: Text('YOUR CARD', style: TextStyle(fontSize: 20, color: Colors.blueGrey),)),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 9,
+                      ),
+                      Container(
+                          child: Text(
+                        'YOUR CARD',
+                        style: TextStyle(fontSize: 20, color: Colors.blueGrey),
+                      )),
                     ],
                   ),
-                  SizedBox(height: MediaQuery
-                      .of(context)
-                      .size
-                      .height / 12,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 12,
+                  ),
                   Center(
                     child: Screenshot(
                       controller: screenshotController,
@@ -86,54 +89,49 @@ class _SharingPageState extends State<SharingPage> {
               ),
               Center(
                   child: NeuContainerWithoutPadding(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width / 2.4,
-                    height: 70,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        FloatingActionButton(
-                          mini: true,
-                          onPressed: () async {
-                            await shareScreenShot();
-                          },
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.share,
-                            color: Colors.black38,
-                          ),
-                          heroTag: 'b',
-                        ),
-
-                        FloatingActionButton(
-                          backgroundColor: Colors.white,
-                          mini: true,
-                          onPressed: () {
-                            screenshotController
-                                .capture(pixelRatio: 4)
-                                .then((File image) async {
-                              await ImageGallerySaver.saveImage(
-                                  image.readAsBytesSync());
-                              Scaffold.of(context).showSnackBar(SnackBar(content: Text('Image Saved to Gallery')));
-                            }).catchError((onError) {
-                              print(onError);
-                            });
-                          },
-                          child: Icon(
-                            Icons.file_download,
-                            color: Colors.black38,
-                          ),
-                        ),
-
-                      ],
+                width: MediaQuery.of(context).size.width / 2.4,
+                height: 70,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    FloatingActionButton(
+                      mini: true,
+                      onPressed: () async {
+                        await shareScreenShot();
+                      },
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.share,
+                        color: Colors.black38,
+                      ),
+                      heroTag: 'b',
                     ),
-                  )),
+                    FloatingActionButton(
+                      backgroundColor: Colors.white,
+                      mini: true,
+                      onPressed: () {
+                        screenshotController
+                            .capture(pixelRatio: 4)
+                            .then((File image) async {
+                          await ImageGallerySaver.saveImage(
+                              image.readAsBytesSync());
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text('Visiting card saved')));
+                        }).catchError((onError) {
+                          print(onError);
+                        });
+                      },
+                      child: Icon(
+                        Icons.file_download,
+                        color: Colors.black38,
+                      ),
+                    ),
+                  ],
+                ),
+              )),
             ],
           );
         },
-
       ),
     );
   }
